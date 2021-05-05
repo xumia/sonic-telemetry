@@ -64,6 +64,17 @@ stages:
         runBranch: 'refs/heads/master'
       displayName: "Download sonic-mgmt-common"
 
+    - task: DownloadPipelineArtifact@2
+      inputs:
+        source: specific
+        project: build
+        pipeline: 169
+        artifact: golang
+        runVersion: 'latestFromBranch'
+        targetPath: '$(Build.ArtifactStagingDirectory)/golang'
+        runBranch: 'refs/heads/main'
+      displayName: "Download golang"
+
     - script: |
         # REDIS
         sudo apt-get install -y redis-server
@@ -75,6 +86,13 @@ stages:
         # LIBYANG
         sudo dpkg -i ../target/debs/buster/libyang*1.0.73*.deb
       displayName: "Install dependency"
+
+    - script: |
+        cd $(Build.ArtifactStagingDirectory)/golang/openssl
+        sudo dpkg -i --force-overwrite libssl1.1_1.1.1g-fips_amd64.deb libssl-dev_1.1.1g-fips_amd64.deb openssl_1.1.1g-fips_amd64.deb libssl-doc_1.1.1g-fips_all.deb
+        cd $(Build.ArtifactStagingDirectory)/golang/
+        sudo dpkg -i --force-overwrite golang-1.14-go_1.14-3~fips_amd64.deb golang-1.14_1.14-3~fips_all.deb golang-1.14-doc_1.14-3~fips_all.deb
+      displayName: "Install golang"
 
     - script: |
         set -ex
