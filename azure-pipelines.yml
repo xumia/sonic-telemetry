@@ -91,7 +91,7 @@ stages:
         cd $(Build.ArtifactStagingDirectory)/golang/openssl
         sudo dpkg -i --force-overwrite libssl1.1_1.1.1g-fips_amd64.deb libssl-dev_1.1.1g-fips_amd64.deb openssl_1.1.1g-fips_amd64.deb libssl-doc_1.1.1g-fips_all.deb
         cd $(Build.ArtifactStagingDirectory)/golang/
-        sudo dpkg -i --force-overwrite golang-1.14-doc_1.14-3~fips_all.deb golang-1.14-go_1.14-3~fips_amd64.deb golang-1.14_1.14-3~fips_all.deb golang-1.14-doc_1.14-3~fips_all.deb
+        sudo dpkg -i --force-overwrite golang-1.14-src_1.14-3~fips_amd64.deb golang-1.14-go_1.14-3~fips_amd64.deb golang-1.14_1.14-3~fips_all.deb golang-1.14-doc_1.14-3~fips_all.deb
       displayName: "Install golang"
 
     - script: |
