@@ -300,7 +300,7 @@ restart: //Remote server might go down, in that case we restart with next destin
 	cs.client = nil
 	cs.cMu.Unlock()
 	if cs.opened == true {
-		cs.open = true
+		cs.opened = true
 	}
 
 	if cs.opened != true {
