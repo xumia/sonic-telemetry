@@ -32,7 +32,7 @@ stages:
 
     variables:
       DIFF_COVER_CHECK_THRESHOLD: 80
-      DIFF_COVER_DISABLE: 'false'
+      DIFF_COVER_ENABLE: 'true'
       DIFF_COVER_WORKING_DIRECTORY: $(System.DefaultWorkingDirectory)/sonic-telemetry
 
     container:
